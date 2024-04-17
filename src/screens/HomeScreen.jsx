@@ -10,7 +10,7 @@ export default function HomeScreen({navigation}) {
             navigation.navigate("LoginScreen");
         }}
       >
-        Logout
+        Login
         </Button>
     </View>
   );
