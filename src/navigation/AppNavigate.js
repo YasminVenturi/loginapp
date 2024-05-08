@@ -23,14 +23,14 @@ export default function AppNavigator() {
           options={{
             title: "Inicial",
           }}
-          />
+        />
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
           options={{
             title: "Inicial",
           }}
-       />
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
