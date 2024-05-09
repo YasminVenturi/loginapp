@@ -53,7 +53,7 @@ export default function LoginScreen({ navigation }) {
         />
         <View>
           <Button onPress={realizaLogin} mode="contained">
-            Fazer Login
+            Login Realizado com Sucesso
           </Button>
         </View>
         <Button onPress={() => navigation.navigate("RegisterScreen")}>
