@@ -2,6 +2,8 @@ import { useState } from "react";
 import { View } from "react-native";
 import { Button, Surface, Text, TextInput } from "react-native-paper";
 import { styles } from "../config/styles";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../config/firebase";
 
 
 export default function LoginScreen({ navigation }) {
@@ -24,6 +26,16 @@ export default function LoginScreen({ navigation }) {
     } else {
       setErro({ ...erro, senha: false});
     }
+    realizaLoginNoFirebase();
+  }
+
+  async function realizaLoginNoFirebase() {
+    try {
+      const usuarioRef = await signInWithEmailAndPassword(auth, email, senha);
+      console.log(usuarioRef);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
@@ -43,6 +55,7 @@ export default function LoginScreen({ navigation }) {
           onChangeText={setEmail}
           value={email}
           style={styles.input}
+          error={erro.email}
         />
         <TextInput
           placeholder="Digite sua senha"
@@ -50,10 +63,11 @@ export default function LoginScreen({ navigation }) {
           value={senha}
           secureTextEntry // faz com que o campo seja senha com *
           style={styles.input}
+          error={erro.senha}
         />
         <View>
           <Button onPress={realizaLogin} mode="contained">
-            Login Realizado com Sucesso
+            Fazer Login
           </Button>
         </View>
         <Button onPress={() => navigation.navigate("RegisterScreen")}>
