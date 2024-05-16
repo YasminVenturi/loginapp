@@ -33,8 +33,17 @@ export default function LoginScreen({ navigation }) {
     try {
       const usuarioRef = await signInWithEmailAndPassword(auth, email, senha);
       console.log(usuarioRef);
+      navigation.navigate("HomeScreen"); 
     } catch (error) {
-      console.error(error);
+      if (error.code === "auth/user-not-found") {
+        setErrorMensage("Usuário não encontrado.");
+      } else if (
+        error.code === "auth/wrong-password") {
+        setErrorMensage("Senha incorreta.");
+      } else {
+        setErrorMensage("Erro ao fazer login: " + error.message);
+      }
+      showModal(); nb  
     }
   }
 
