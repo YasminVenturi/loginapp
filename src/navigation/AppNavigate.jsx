@@ -3,6 +3,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "../screens/LoginScreen";
 import HomeScreen from "../screens/HomeScreen";
 import RegisterScreen from "../screens/RegisterScreen";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import SplashScreen from "../screens/SlapshScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -11,27 +13,48 @@ export default function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="LoginScreen"
-          component={LoginScreen}
+          name="SplashScreen"
+          component={SplashScreen}
           options={{
-            title: "Login",
+            title: "SplashScreen",
+            headerShown: false,
           }}
         />
         <Stack.Screen
           name="RegisterScreen"
           component={RegisterScreen}
           options={{
-            title: "Inicial",
+            title: "Cadastro de usuário",
           }}
         />
         <Stack.Screen
-          name="HomeScreen"
-          component={HomeScreen}
+          name="LoginScreen"
+          component={LoginScreen}
           options={{
-            title: "Inicial",
+            title: "Login",
+            headerLeft: () => null, // This removes the back button
+          }}
+        />
+         <Stack.Screen
+          name="HomeScreen"
+          component={TabsNavigation}
+          options={{
+            headerShown: false,
           }}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
+const Tabs = createMaterialBottomTabNavigator();
+
+export function TabsNavigation() {
+  return (
+    <Tabs.Navigator>
+      <Tabs.Screen name="Home" component={HomeScreen} />
+      <Tabs.Screen name="Login" component={LoginScreen} />
+      <Tabs.Screen name="Register" component={RegisterScreen} />
+    </Tabs.Navigator>
+  );
+} 
