@@ -5,6 +5,7 @@ import HomeScreen from "../screens/HomeScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import SplashScreen from "../screens/SlapshScreen";
+import NoteInsert from "../screens/NoteInsert";
 
 const Stack = createNativeStackNavigator();
 
@@ -53,8 +54,7 @@ export function TabsNavigation() {
   return (
     <Tabs.Navigator>
       <Tabs.Screen name="Home" component={HomeScreen} />
-      <Tabs.Screen name="Login" component={LoginScreen} />
-      <Tabs.Screen name="Register" component={RegisterScreen} />
+      <Tabs.Screen name="Insert" component={NoteInsert} />
     </Tabs.Navigator>
   );
 } 

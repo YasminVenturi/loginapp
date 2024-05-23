@@ -13,4 +13,9 @@ export const styles = StyleSheet.create({
   input: {
     marginBottom: 10,
   },
+  modal: {
+    backgroundColor: "white",
+    padding: 20,
+    borderRadius: 10,
+  },
 });
